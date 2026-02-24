@@ -47,8 +47,8 @@ pipeline {
                         docker pull $FRONTEND_IMAGE:latest &&
                         docker pull $BACKEND_IMAGE:latest &&
                         cd ~/mean-devops-crud &&
-                        docker compose down &&
-                        docker compose up -d
+                        docker-compose down &&
+                        docker-compose up -d
                     "
                     '''
                 }
