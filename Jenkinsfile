@@ -13,7 +13,7 @@ pipeline {
         stage('Clone') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/YOUR_USERNAME/mean-devops-crud.git'
+                url: 'https://github.com/Gowthamps2003/mean-devops-crud.git'
             }
         }
 
@@ -47,7 +47,7 @@ pipeline {
             steps {
                 sshagent(['ec2-ssh-key']) {
                     sh """
-                    ssh -o StrictHostKeyChecking=no ubuntu@$APP_SERVER '
+                    ssh -o StrictHostKeyChecking=no ubuntu@$3.109.151.248 '
                     docker pull $FRONTEND_IMAGE:latest &&
                     docker pull $BACKEND_IMAGE:latest &&
                     docker-compose down &&
