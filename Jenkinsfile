@@ -10,13 +10,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git branch: 'main',
-                url: 'https://github.com/gowthamps03/mean-devops-crud.git'
-            }
-        }
-
         stage('Build Docker Images') {
             steps {
                 sh 'docker build -t $FRONTEND_IMAGE:latest ./frontend'
