@@ -47,7 +47,7 @@ pipeline {
             steps {
                 sshagent(['ec2-ssh-key']) {
                     sh """
-                    ssh -o StrictHostKeyChecking=no ubuntu@$3.109.151.248 '
+                    ssh -o StrictHostKeyChecking=no ubuntu@3.109.151.248 '
                     docker pull $FRONTEND_IMAGE:latest &&
                     docker pull $BACKEND_IMAGE:latest &&
                     docker-compose down &&
