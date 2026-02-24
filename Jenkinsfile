@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_USER = "yourdockerhubusername"
-        FRONTEND_IMAGE = "yourdockerhubusername/frontend"
-        BACKEND_IMAGE = "yourdockerhubusername/backend"
+        DOCKER_USER = "gowthamps03"
+        FRONTEND_IMAGE = "${DOCKER_USER}/frontend"
+        BACKEND_IMAGE = "${DOCKER_USER}/backend"
         APP_SERVER = "3.109.151.248"
     }
 
@@ -46,14 +46,14 @@ pipeline {
         stage('Deploy to App EC2') {
             steps {
                 sshagent(['ec2-ssh-key']) {
-                    sh """
-                    ssh -o StrictHostKeyChecking=no ubuntu@3.109.151.248 '
-                    docker pull $FRONTEND_IMAGE:latest &&
-                    docker pull $BACKEND_IMAGE:latest &&
-                    docker-compose down &&
-                    docker-compose up -d
-                    '
-                    """
+                    sh '''
+                    ssh -o StrictHostKeyChecking=no ubuntu@$APP_SERVER "
+                        docker pull $FRONTEND_IMAGE:latest &&
+                        docker pull $BACKEND_IMAGE:latest &&
+                        docker compose down &&
+                        docker compose up -d
+                    "
+                    '''
                 }
             }
         }
