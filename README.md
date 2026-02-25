@@ -6,7 +6,7 @@ STEP 1:
 3. add all the frontend and backend folders to the github
 
 STEP 2 :
-1.Open cmd in the path of the folder on your local machine  
+1. Open cmd in the path of the folder on your local machine  
 2. In AWS create a EC2 intsance with key pair 
 3. by using Key pair connect your local machine with EC2 instance 
 4. Run all the commnands in your local machine
